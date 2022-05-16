@@ -11,6 +11,7 @@ public class Main {
         String name;
         int age;
         String key;
+        int id;
 
         // Opening message
         System.out.println("Pet Database Program");
@@ -44,6 +45,33 @@ public class Main {
                         System.out.println("That is not a valid input!");
                         database.viewPets();
                     }
+                    break;
+
+                // Updates pet in array
+                case 3:
+                    System.out.print("Enter the pet ID you want to update: ");
+                    id = input.nextInt();
+                    input.nextLine();
+                    System.out.print("Enter new name and new age: ");
+                    // split input line by space as it is assumed both are given
+                    line = input.nextLine().split(" ");
+                    // checks if there are 2 inputs then proceeds
+                    if (line.length == 2) {
+                        name = line[0];
+                        age = Integer.valueOf(line[1]);
+                        database.updatePet(id, name, age);
+                    } else {
+                        System.out.println("That is not a valid input!");
+                        database.viewPets();
+                    }
+                    break;
+
+                // Removes pet in array
+                case 4:
+                    System.out.print("Enter the pet ID you want to remove: ");
+                    id = input.nextInt();
+                    input.nextLine();
+                    database.removePet(id);
                     break;
 
                 // Search pet by name

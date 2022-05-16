@@ -1,9 +1,4 @@
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.FileWriter;
-import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Scanner;
 
 public class PetDatabase {
     // ArrayList for simplifying arrays
@@ -85,4 +80,41 @@ public class PetDatabase {
         System.out.println("+------------------+");
         System.out.println(counter + " rows in set.");
     }
+
+    // Update pet method
+    public void updatePet(int id, String name, int age) {
+        // Changes the age and name to the new input and prints new table
+        if (id >= 0 && id < petArray.size() && age <= 20 && age > 0) {
+            // Only used to print the message as shown in example
+            String oldName = petArray.get(id).getName();
+            int oldAge = petArray.get(id).getAge();
+            petArray.get(id).setAge(age);
+            petArray.get(id).setName(name);
+            System.out.println(oldName + " " + oldAge + " changed to " + name + " " + age);
+        } else {
+            if (id < 0 || id >= petArray.size()) {
+                System.out.println("ID does not exist!");
+            }
+            if (age < 1 || age > 20) {
+                System.out.println("That is not a valid age!");
+            }
+        }
+        viewPets();
+    }
+
+    // Remove pet method
+    public void removePet(int id) {
+        // Prints message before removing and shows new table
+        // If id is within the contraints it will proceed
+        if (id >= 0 && id < petArray.size()) {
+            System.out
+                    .println(id + " " + petArray.get(id).getName() + " " + petArray.get(id).getAge() + " is removed.");
+            petArray.remove(id);
+            // else it prints the message why it does not work
+        } else {
+            System.out.println("That is not a valid ID!");
+        }
+        viewPets();
+    }
+
 }
