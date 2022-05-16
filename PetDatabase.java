@@ -46,4 +46,43 @@ public class PetDatabase {
         }
         viewPets();
     }
+
+    // Used to find age or name of pet
+    public void findPets(int method, String key) {
+        // Chose to use a counter rather than a new Arraylist to simplify loops
+        int counter = 0;
+        // Used only for age as method takes in a String.
+        int numKey;
+        // Header
+        System.out.println("+-------------------+");
+        System.out.println("|ID |NAME      |AGE |");
+        System.out.println("+-------------------+");
+        // Loops through array regardless of sort method
+        for (int i = 0; i < petArray.size(); i++) {
+            // First sort method is by name
+            if (method == 0) {
+                // Similar to the previous view loop, but if name matches then it prints
+                if (petArray.get(i).getName().toLowerCase().equals(key)) {
+                    System.out.println(
+                            "|" + String.format("%-3d", i) + "|" + String.format("%-10s", petArray.get(i).getName())
+                                    + "|" + String.format("%-4d", petArray.get(i).getAge()) + "|");
+                    counter++;
+                }
+            }
+            // Second sort method is by age
+            if (method == 1) {
+                numKey = Integer.valueOf(key);
+                // Similar to the previous view loop, but if age matches then it prints
+                if (petArray.get(i).getAge() == numKey) {
+                    System.out.println(
+                            "|" + String.format("%-3d", i) + "|" + String.format("%-10s", petArray.get(i).getName())
+                                    + "|" + String.format("%-4d", petArray.get(i).getAge()) + "|");
+                    counter++;
+                }
+            }
+        }
+        // Bottom of table
+        System.out.println("+------------------+");
+        System.out.println(counter + " rows in set.");
+    }
 }

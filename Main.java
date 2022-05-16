@@ -10,6 +10,8 @@ public class Main {
         String[] line;
         String name;
         int age;
+        String key;
+
         // Opening message
         System.out.println("Pet Database Program");
         // Loops until it is changed
@@ -27,6 +29,7 @@ public class Main {
                 case 1:
                     database.viewPets();
                     break;
+
                 // Adds pet to array
                 case 2:
                     System.out.print("Add pet ie. name age: ");
@@ -42,6 +45,21 @@ public class Main {
                         database.viewPets();
                     }
                     break;
+
+                // Search pet by name
+                case 5:
+                    System.out.print("Enter a name to search: ");
+                    key = input.nextLine().toLowerCase();
+                    database.findPets(0, key);
+                    break;
+                // Search pet by age
+
+                case 6:
+                    System.out.print("Enter an age to search: ");
+                    key = input.nextLine();
+                    database.findPets(1, key);
+                    break;
+
                 // Exits program
                 case 7:
                     loop = false;
