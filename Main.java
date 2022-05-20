@@ -19,7 +19,7 @@ public class Main {
         while (loop) {
             // Menu options
             System.out.println(
-                    "What would you like to do?\n1) View all pets\n2) Add more pets\n7) Exit program");
+                    "What would you like to do?\n1) View all pets\n2) Add more pets\n3) Update an existing pet\n4) Remove an existing pet\n5) Search pets by name\n6) Search pets by age\n7) Exit program");
             // Allows user to easily see their input
             System.out.print("Your Choice: ");
             // Used in the switch
@@ -94,6 +94,7 @@ public class Main {
                     break;
             }
         }
+        database.save("Pet_Database.txt");
         input.close();
     }
 }
