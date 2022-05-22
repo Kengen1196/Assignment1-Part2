@@ -1,4 +1,5 @@
 import java.util.Scanner;
+import java.io.File;
 
 public class Main {
     public static void main(String[] args) {
@@ -15,6 +16,12 @@ public class Main {
 
         // Opening message
         System.out.println("Pet Database Program");
+
+        File inputFile = new File("Pet_Database.txt");
+        if (inputFile.exists()) {
+            database.load("Pet_Database.txt");
+        }
+
         // Loops until it is changed
         while (loop) {
             // Menu options
